@@ -1,3 +1,25 @@
-x=[1,2,3,4,5,6]
-for i in x:
-  print(i)
+class Studenti:
+    
+    trajanje_studija=5
+    stipendija_osnovica=20000
+    koeficijent_stimulacije=1.03
+    broj_studenata=0
+    
+    def __init__(self,ime,prezime,fakultet):
+        self.ime=ime
+        self.prezime=prezime
+        self.fakultet=fakultet
+        
+        Studenti.broj_studenata+=1
+    
+    def stipendija_iznos(self):
+        print(int(self.stipendija_osnovica*self.koeficijent_stimulacije))
+        
+    @classmethod
+    def podesi_koef_stimulacije(cls,koeficijent):
+        cls.koeficijent_stimulacije=koeficijent
+        
+    @classmethod
+    def from_string(cls,student_string):
+        ime,prezime,fakultet=student_string.split('-')
+        return cls(ime,prezime,fakultet)
